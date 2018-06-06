@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('mp.index');
 });
+
+Route::get('/search', function () {
+    return view('mp.drivingSchoolSearch')->with('count', random_int(1, 30));
+});
+Route::post('/clue', ['as' => 'create.clue', 'uses' => 'ClueController@create']);
