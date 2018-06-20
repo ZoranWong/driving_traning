@@ -66,7 +66,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'PRC',
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'cn',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,6 +161,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        JeroenNoten\LaravelAdminLte\ServiceProvider::class
 
     ],
 

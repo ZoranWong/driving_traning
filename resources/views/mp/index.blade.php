@@ -229,9 +229,11 @@
             let width = $('#schoolList li .school-info-box .school-image').width();
             $('#schoolList li .school-info-box .school-image').height(width*2/3);
             $('.get_time span').click(function () {
+                $('.get_time span.active').removeClass('active');
                 $(this).toggleClass('active');
             });
             $('.type span').click(function () {
+                $('.type span.active').removeClass('active');
                 $(this).toggleClass('active');
             });
             $("#schoolList li").click(function () {

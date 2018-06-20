@@ -21,4 +21,9 @@ class ClueController extends Controller
             ]);
         }
     }
+
+    public function index()
+    {
+
+    }
 }
