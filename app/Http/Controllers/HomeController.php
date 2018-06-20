@@ -23,6 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $clueCount = 0;
+        $completedClueCount = 0;
+        $waitCompletedClueCount = 0;
+        $newClueCount = 0;
+        $waitCompletedCluePageCount = 1;
+        return view('home')->with('clueCount', $clueCount)
+            ->with('newClueCount', $newClueCount)
+            ->with('waitCompletedClueCount', $waitCompletedClueCount)
+            ->with('completedClueCount', $completedClueCount)
+            ->with('waitCompletedCluePageCount', $waitCompletedCluePageCount);
     }
 }

@@ -10,6 +10,23 @@ use Prettus\Repository\Traits\TransformableTrait;
  * Class Permission.
  *
  * @package namespace App\Entities;
+ * @property int $id
+ * @property string $slug 权限唯一标识
+ * @property string $displayName 显示名称
+ * @property \Carbon\Carbon|null $createdAt
+ * @property \Carbon\Carbon|null $updatedAt
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Permission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Permission whereDisplayName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Permission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Permission whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Permission whereUpdatedAt($value)
+ * @mixin \Eloquent
+ * @property string $displayName 显示名称
+ * @property \Carbon\Carbon|null $createdAt
+ * @property \Carbon\Carbon|null $updatedAt
+ * @property string $displayName 显示名称
+ * @property \Carbon\Carbon|null $createdAt
+ * @property \Carbon\Carbon|null $updatedAt
  */
 class Permission extends Model implements Transformable
 {

@@ -1,7 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: wang
- * Date: 2018/6/18
- * Time: 上午1:11
- */
+@extends('adminlte::page')
+
+@section('title', '37学车')
+
+@section('content_header')
+    <h1>学员线索</h1>
+@stop
+@section('content')
+@stop

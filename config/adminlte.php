@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>37生活</b><sup class="font-light" style="font-size: 16px;top:-1.5em;">学车频道</sup>',
+    'logo' => '<b>37生活</b><sup class="font-light" style="font-size: 16px;top:-1em;">学车频道</sup>',
 
     'logo_mini' => '<b>37</b>学车',
 
