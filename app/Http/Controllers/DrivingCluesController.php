@@ -42,15 +42,13 @@ class DrivingCluesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $drivingClues = $this->repository->all();
+        $drivingClues = $this->repository->paginate($request->input('limit', self::PAGE_LIMIT));
 
         if (request()->wantsJson()) {
 
-            return response()->json([
-                'data' => $drivingClues,
-            ]);
+            return response()->json($drivingClues);
         }
 
         return view('drivingClues.index', compact('drivingClues'));

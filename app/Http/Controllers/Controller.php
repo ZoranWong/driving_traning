@@ -9,5 +9,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
+    const PAGE_LIMIT = 15;
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

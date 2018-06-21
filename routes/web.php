@@ -26,6 +26,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group([], function (\Illuminate\Routing\Router $router) {
-    $router->get('speed', []);
+Route::group(['middleware' => ['web', 'auth']], function (\Illuminate\Routing\Router $router) {
+    $router->get('clues', 'DrivingCluesController@index')->name('clues.index');
 });

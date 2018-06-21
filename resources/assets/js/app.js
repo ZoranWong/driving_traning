@@ -8,15 +8,21 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+const ElementUI = require('element-ui');
+const axios = require('axios');
+const VueAxios = require('vue-axios');
 
+Vue.use(ElementUI);
+Vue.use(VueAxios, axios);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('ToDoList', require('./components/ToDoListComponent.vue'));
-Vue.component('ClueEditor', require('./components/ClueEditorComponent.vue'));
+Vue.component('to-do-list', require('./components/ToDoListComponent.vue'));
+Vue.component('clue-editor', require('./components/ClueEditorComponent.vue'));
+Vue.component('clue-table', require('./components/ClueTableComponent.vue'));
 
 const app = new Vue({
     el: '#app'

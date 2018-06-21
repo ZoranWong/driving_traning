@@ -36,13 +36,12 @@ class HomeController extends Controller
             return $clue->where('status', DrivingClue::WAIT);
         })->count();
         $newClueCount = $this->clueRepository->scopeQuery(function (DrivingClue $clue) {
-            return $clue->where('create_at', '>', Carbon::today());
+            return $clue->where('created_at', '>', Carbon::today());
         })->count();
-        $waitCompletedCluePageCount = 1;
+
         return view('home')->with('clueCount', $clueCount)
             ->with('newClueCount', $newClueCount)
             ->with('waitCompletedClueCount', $waitCompletedClueCount)
-            ->with('completedClueCount', $completedClueCount)
-            ->with('waitCompletedCluePageCount', $waitCompletedCluePageCount);
+            ->with('completedClueCount', $completedClueCount);
     }
 }

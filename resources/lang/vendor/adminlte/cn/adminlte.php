@@ -3,6 +3,7 @@
 return [
 
     'full_name'                   => '姓名',
+    'user_name'                   => '邮箱/手机',
     'email'                       => '邮箱',
     'password'                    => '密码',
     'retype_password'             => '重输密码',
