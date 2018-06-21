@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
+
 /**
- * Class DrivingSchool.
+ * App\Entities\DrivingSchool
  *
- * @package namespace App\Entities;
  * @property int $id
  * @property float $amount 余额
  * @property float $totalWithdrewAmount 已提现钱

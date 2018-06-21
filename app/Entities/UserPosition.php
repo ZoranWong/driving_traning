@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
+
 /**
- * Class UserPosition.
+ * App\Entities\UserPosition
  *
- * @package namespace App\Entities;
  * @property int $id
  * @property int $userId
  * @property string|null $position

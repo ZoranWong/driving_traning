@@ -7,9 +7,8 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class DrivingClue.
+ * App\Entities\DrivingClue
  *
- * @package namespace App\Entities;
  * @property int $id
  * @property string $channel 线索来源：JIA_KAO_BAO_DIAN-驾考宝典 CHE_LUN-车轮驾考通 37_LIFE-自营平台线索 BAIDU-百度推广 TOUTIAO-今日头条 WECHAT-微信分享 OTHER-其他
  * @property int $isStudent 是否是学生
@@ -97,80 +96,18 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\DrivingClue whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\DrivingClue whereWantDrivingSchool($value)
  * @mixin \Eloquent
- * @property int $isStudent 是否是学生
- * @property int $bdUserId 客户开发人员
- * @property string $customerName 客户姓名
- * @property string $customerMobile 客户电话
- * @property string $drivingLicenseType 驾照类型
- * @property int $followUpTime 跟进时间
- * @property string $followUpRecord 跟进备注
- * @property string $customerPlan 学车报名计划
- * @property int $actualEnrollTime 实际报名时间
- * @property int $expectPhysicalExaminationTime 预计体检时间
- * @property int $expectExaminationOneTime 预计科目一考试时间
- * @property int $expectExaminationTwoTime 预计科目二考试时间
- * @property int $expectExaminationThreeTime 预计科目三考试时间
- * @property int $expectExaminationFourTime 预计科目四考试时间
- * @property int $expectGetLicenseTime 预计拿证时间
- * @property int $actualPhysicalExaminationTime 实际体检时间
- * @property int $actualExaminationOneTime 实际科目一考试时间
- * @property int $actualExaminationTwoTime 实际科目二考试时间
- * @property int $actualExaminationThreeTime 实际科目三考试时间
- * @property int $actualExaminationFourTime 实际科目四考试时间
- * @property int $actualGetLicenseTime 实际拿证时间
- * @property int $provinceId 学员省份
- * @property int $cityId 城市id
- * @property int $countyId 区县id
- * @property string $wantDrivingSchool 意向驾校
- * @property string $drivingSchool 推荐驾校
- * @property string $trainingPlace 训练场地
- * @property float $planFee 预算价格
- * @property float $quotedPrice 报价
- * @property int $dealTime 成交时间
- * @property float $dealPrice 成交价
- * @property float $basePrice 底价
- * @property \Carbon\Carbon|null $createdAt
- * @property \Carbon\Carbon|null $updatedAt
- * @property string|null $deletedAt
- * @property int $isStudent 是否是学生
- * @property int $bdUserId 客户开发人员
- * @property string $customerName 客户姓名
- * @property string $customerMobile 客户电话
- * @property string $drivingLicenseType 驾照类型
- * @property int $followUpTime 跟进时间
- * @property string $followUpRecord 跟进备注
- * @property string $customerPlan 学车报名计划
- * @property int $actualEnrollTime 实际报名时间
- * @property int $expectPhysicalExaminationTime 预计体检时间
- * @property int $expectExaminationOneTime 预计科目一考试时间
- * @property int $expectExaminationTwoTime 预计科目二考试时间
- * @property int $expectExaminationThreeTime 预计科目三考试时间
- * @property int $expectExaminationFourTime 预计科目四考试时间
- * @property int $expectGetLicenseTime 预计拿证时间
- * @property int $actualPhysicalExaminationTime 实际体检时间
- * @property int $actualExaminationOneTime 实际科目一考试时间
- * @property int $actualExaminationTwoTime 实际科目二考试时间
- * @property int $actualExaminationThreeTime 实际科目三考试时间
- * @property int $actualExaminationFourTime 实际科目四考试时间
- * @property int $actualGetLicenseTime 实际拿证时间
- * @property int $provinceId 学员省份
- * @property int $cityId 城市id
- * @property int $countyId 区县id
- * @property string $wantDrivingSchool 意向驾校
- * @property string $drivingSchool 推荐驾校
- * @property string $trainingPlace 训练场地
- * @property float $planFee 预算价格
- * @property float $quotedPrice 报价
- * @property int $dealTime 成交时间
- * @property float $dealPrice 成交价
- * @property float $basePrice 底价
- * @property \Carbon\Carbon|null $createdAt
- * @property \Carbon\Carbon|null $updatedAt
- * @property string|null $deletedAt
  */
 class DrivingClue extends Model implements Transformable
 {
     use TransformableTrait;
+
+    const WAIT = 0;
+
+    const DEVELOPING = 1;
+
+    const SUCCESS_DEVELOP = 2;
+
+    const FAILED_DEVELOP = 3;
 
     /**
      * The attributes that are mass assignable.

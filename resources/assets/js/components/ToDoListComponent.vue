@@ -27,9 +27,9 @@
                     <!-- checkbox -->
                     <input type="checkbox" value="">
                     <!-- todo text -->
-                    <span class="text">学员：{{ item.name}} 手机：{{ item.mobile }}</span>
+                    <span class="text">学员：{{ item.name }} 手机：{{ item.mobile }}</span>
                     <!-- Emphasis label -->
-                    <small class="label {{ labelClass(item.pass_time) }}"><i class="fa fa-clock-o"></i> {{ passTime(item.pass_time) }}</small>
+                    <small :class="labelClass(item.pass_time) "><i class="fa fa-clock-o"></i> {{ passTime(item.pass_time) }}</small>
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
                         <i class="fa fa-edit" v-on:click = "popupEditor(item)"></i>
@@ -74,17 +74,17 @@
             },
             labelClass(time) {
                 if (time < 60) {
-                    return `label-danger`;
+                    return `label label-danger`;
                 } else if (time < 3600) {
-                    return `label-info`;
+                    return `label label-info`;
                 } else if (time < 84600) {
-                    return `label-warning`;
+                    return `label label-warning`;
                 } else if (time < 604800) {
-                    return `label-success`;
+                    return `label label-success`;
                 }else if(time < 2592000) {
-                    return `label-primary`;
+                    return `label label-primary`;
                 }else {
-                    return `label-default`;
+                    return `label label-default`;
                 }
             },
             jump(page) {

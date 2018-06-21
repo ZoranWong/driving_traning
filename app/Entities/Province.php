@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
+
 /**
- * Class Province.
+ * App\Entities\Province
  *
- * @package namespace App\Entities;
  * @property int $id
  * @property string $code 行政编码
  * @property int $status 状态:0-未开发 1-开发 2-关停
@@ -25,12 +25,6 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Province whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Province whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property string $firstWord 首字母
- * @property \Carbon\Carbon|null $createdAt
- * @property \Carbon\Carbon|null $updatedAt
- * @property string $firstWord 首字母
- * @property \Carbon\Carbon|null $createdAt
- * @property \Carbon\Carbon|null $updatedAt
  */
 class Province extends Model implements Transformable
 {

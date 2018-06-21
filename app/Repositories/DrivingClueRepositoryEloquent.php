@@ -2,11 +2,13 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Traits\RepositoryExtends;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\DrivingClueRepository;
 use App\Entities\DrivingClue;
 use App\Validators\DrivingClueValidator;
+use Prettus\Repository\Exceptions\RepositoryException;
 
 /**
  * Class DrivingClueRepositoryEloquent.
@@ -15,6 +17,7 @@ use App\Validators\DrivingClueValidator;
  */
 class DrivingClueRepositoryEloquent extends BaseRepository implements DrivingClueRepository
 {
+    use RepositoryExtends;
     /**
      * Specify Model class name
      *
@@ -29,6 +32,7 @@ class DrivingClueRepositoryEloquent extends BaseRepository implements DrivingClu
 
     /**
      * Boot up the repository, pushing criteria
+     * @throws RepositoryException
      */
     public function boot()
     {

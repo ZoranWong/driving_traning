@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
+
 /**
- * Class Permission.
+ * App\Entities\Permission
  *
- * @package namespace App\Entities;
  * @property int $id
  * @property string $slug 权限唯一标识
  * @property string $displayName 显示名称
@@ -21,12 +21,6 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Permission whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Permission whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property string $displayName 显示名称
- * @property \Carbon\Carbon|null $createdAt
- * @property \Carbon\Carbon|null $updatedAt
- * @property string $displayName 显示名称
- * @property \Carbon\Carbon|null $createdAt
- * @property \Carbon\Carbon|null $updatedAt
  */
 class Permission extends Model implements Transformable
 {

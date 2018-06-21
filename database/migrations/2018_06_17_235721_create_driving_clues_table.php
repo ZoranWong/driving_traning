@@ -63,6 +63,7 @@ class CreateDrivingCluesTable extends Migration
             $table->float('profit')->default(0)->comment('利润');
             $table->float('commission')->default(0)->comment('提出');
             $table->float('bonus')->default(0)->comment('管理分红');
+            $table->integer('status')->default(0)->comment('0待开发 1 开发中 2 开发成功 3 开发失败');
             $table->timestamps();
             $table->softDeletes();
         });

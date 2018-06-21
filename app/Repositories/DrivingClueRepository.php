@@ -12,4 +12,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface DrivingClueRepository extends RepositoryInterface
 {
     //
+    public function count();
 }

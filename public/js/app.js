@@ -47443,17 +47443,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         labelClass: function labelClass(time) {
             if (time < 60) {
-                return 'label-danger';
+                return 'label label-danger';
             } else if (time < 3600) {
-                return 'label-info';
+                return 'label label-info';
             } else if (time < 84600) {
-                return 'label-warning';
+                return 'label label-warning';
             } else if (time < 604800) {
-                return 'label-success';
+                return 'label label-success';
             } else if (time < 2592000) {
-                return 'label-primary';
+                return 'label label-primary';
             } else {
-                return 'label-default';
+                return 'label label-default';
             }
         },
         jump: function jump(page) {
@@ -48112,7 +48112,127 @@ if (false) {
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function(){},staticRenderFns:[]}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "box box-primary" }, [
+    _c(
+      "div",
+      {
+        staticClass: "box-header ui-sortable-handle",
+        staticStyle: { cursor: "move" }
+      },
+      [
+        _c("i", { staticClass: "ion ion-clipboard" }),
+        _vm._v(" "),
+        _c("h3", { staticClass: "box-title" }, [_vm._v("待处理线索")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "box-tools pull-right" }, [
+          _c(
+            "ul",
+            { staticClass: "pagination pagination-sm inline" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._l(_vm.totalPage, function(n) {
+                return _c("li", { class: { active: _vm.active(n) } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.jump(n)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(n))]
+                  )
+                ])
+              }),
+              _vm._v(" "),
+              _vm._m(1)
+            ],
+            2
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "box-body" }, [
+      _c(
+        "ul",
+        { staticClass: "todo-list ui-sortable" },
+        _vm._l(_vm.items, function(item) {
+          return _c(
+            "li",
+            {
+              on: {
+                click: function($event) {
+                  _vm.popupEditor(item)
+                }
+              }
+            },
+            [
+              _vm._m(2, true),
+              _vm._v(" "),
+              _c("input", { attrs: { type: "checkbox", value: "" } }),
+              _vm._v(" "),
+              _c("span", { staticClass: "text" }, [
+                _vm._v(
+                  "学员：" + _vm._s(item.name) + " 手机：" + _vm._s(item.mobile)
+                )
+              ]),
+              _vm._v(" "),
+              _c("small", { class: _vm.labelClass(item.pass_time) }, [
+                _c("i", { staticClass: "fa fa-clock-o" }),
+                _vm._v(" " + _vm._s(_vm.passTime(item.pass_time)))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "tools" }, [
+                _c("i", {
+                  staticClass: "fa fa-edit",
+                  on: {
+                    click: function($event) {
+                      _vm.popupEditor(item)
+                    }
+                  }
+                })
+              ])
+            ]
+          )
+        })
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("«")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("»")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "handle ui-sortable-handle" }, [
+      _c("i", { staticClass: "fa fa-ellipsis-v" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-ellipsis-v" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
