@@ -9,7 +9,7 @@
     <h1>学员线索</h1>
 @stop
 @section('content')
-    <clue-table></clue-table>
+    <clue-table :channels = "{{ $channels }}"></clue-table>
 @stop
 @push('js')
     <script src="{{asset('js/app.js')}}"></script>

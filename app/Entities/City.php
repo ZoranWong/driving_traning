@@ -22,6 +22,9 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\City whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\City whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $provinceId 省份id
+ * @property \Carbon\Carbon|null $createdAt
+ * @property \Carbon\Carbon|null $updatedAt
  */
 class City extends Model implements Transformable
 {

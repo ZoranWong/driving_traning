@@ -18,8 +18,8 @@ class CreateDrivingCluesTable extends Migration
         Schema::create('driving_clues', function (Blueprint $table) {
             $table->increments('id');
             $table->string('channel')
-                ->default('37_LIFE')
-                ->comment('线索来源：JIA_KAO_BAO_DIAN-驾考宝典 CHE_LUN-车轮驾考通 37_LIFE-自营平台线索 BAIDU-百度推广 TOUTIAO-今日头条 WECHAT-微信分享 OTHER-其他');
+                ->default('owner')
+                ->comment('线索来源');
             $table->boolean('is_student')->default(false)->comment('是否是学生');
             $table->unsignedInteger('bd_user_id')->default(0)->comment('客户开发人员');
             $table->string('customer_name', 60)->default('')->comment('客户姓名');

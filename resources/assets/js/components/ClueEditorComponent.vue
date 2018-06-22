@@ -1,117 +1,110 @@
 <template>
     <div class="box box-info">
-        <div class="box-header">
-            <h3 class="box-title">学员线索编辑</h3>
-        </div>
         <div class="box-body">
             <!-- Color Picker -->
-            <div class="form-group col-xs-12 col-md-6 col-lg-4 flex-md-column">
-                <label >线索渠道:</label>
-                <select class=" form-control">
-                    <option value="baidu">百度推广</option>
-                    <option value="toutiao">今日头条</option>
-                    <option value="wx_quan">微信朋友圈</option>
-                    <option value="wx_qun">微信群</option>
-                    <option value="chelun">车轮驾考通</option>
-                    <option value="baodian">驾考宝典</option>
-                    <option value="owner">平台推广</option>
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4 flex-md-column">
-                <label >学员姓名:</label>
-                <input  type="text" class=" form-control">
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >学员电话:</label>
-                <input  type="number" class="form-control ">
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >驾照类型:</label>
-                <select class="form-control">
-                    <option value="A1">A1</option>
-                    <option value="A2">A2</option>
-                    <option value="A3">A3</option>
-                    <option value="B1">B1</option>
-                    <option value="B2">B2</option>
-                    <option value="C1">C1</option>
-                    <option value="C2">C2</option>
-                    <option value="C3">C3</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                    <option value="M">M</option>
-                    <option value="N">N</option>
-                    <option value="P">P</option>
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >客户意向度:</label>
-                <select class="col-md-8 form-control">
-                    <option value="NEED_NOT">无意向</option>
-                    <option value="POTENTIAL">潜在客户</option>
-                    <option value="HIGH_DEMAND">高意向客户</option>
-                    <option value="LOW_DEMAND">低意向客户</option>
-                    <option value="NO_ANSWER">无人接听</option>
-                    <option value="DEAL">成交</option>
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >学车计划:</label>
-                <select class="form-control">
-                    <option value="HED_BEEN">已学车</option>
-                    <option value="ONE_WEEK">一周</option>
-                    <option value="ONE_MONTH">一个月</option>
-                    <option value="THREE_MONTH">三个月</option>
-                    <option value="SIX_MONTH">六个月</option>
-                    <option value="NOT_PLAN">无计划</option>
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >学员位置:</label>
-                <input type="text" class="form-control ">
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >意向驾校:</label>
-                <input type="text" class=" form-control ">
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >推荐驾校:</label>
-                <input type="text" class=" form-control ">
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >学员预算:</label>
-                <input type="text" class=" form-control ">
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >报价:</label>
-                <input type="text" class="form-control ">
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >驾校低价:</label>
-                <input type="text" class="form-control ">
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >成交价格:</label>
-                <input type="text" class=" form-control ">
-            </div>
-            <div class="form-group col-xs-12 col-md-6 col-lg-4">
-                <label >成交时间:</label>
-                <input type="text" class="form-control ">
-            </div>
-            <!-- /.form group -->
+            <el-form ref="form" :model="clueItem">
+                <el-form-item label="线索渠道" class="col-xs-12 col-md-6">
+                    <el-select v-model="clueItem.channel.name" placeholder="请选择线索渠道">
+                        <el-option v-for="channel in channels" :label="channel.name" :value="channel.slug"></el-option>
+                    </el-select>
+                </el-form-item>
 
+                <el-form-item label="学员姓名" class="col-xs-12 col-md-6">
+                    <el-input v-model="clueItem.customer_name" placeholder="请输入学员姓名"></el-input>
+                </el-form-item>
+
+                <el-form-item label="学员电话" class="col-xs-12 col-md-6">
+                    <el-input v-model="clueItem.customer_mobile" placeholder="请输入学员电话" type="number"></el-input>
+                </el-form-item>
+
+                <el-form-item label="驾照类型" class="col-xs-12 col-md-6">
+                    <el-select v-model="clueItem.driving_license_type" placeholder="请选择驾照类型">
+                        <el-option label="A1" value="A1"></el-option>
+                        <el-option label="A2"  value="A2"></el-option>
+                        <el-option label="A3"  value="A3"></el-option>
+                        <el-option label="B1"  value="B1"></el-option>
+                        <el-option label="B2"  value="B2"></el-option>
+                        <el-option label="C1"  value="C1"></el-option>
+                        <el-option label="C2"  value="C2"></el-option>
+                        <el-option label="C3"  value="C3"></el-option>
+                        <el-option label="D"  value="D"></el-option>
+                        <el-option label="E"  value="E"></el-option>
+                        <el-option label="F"  value="F"></el-option>
+                        <el-option label="M"  value="M"></el-option>
+                        <el-option label="N"  value="N"></el-option>
+                        <el-option label="P" value="P"></el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="客户意向度" class="col-xs-12 col-md-6">
+                    <el-select v-model="clueItem.intention" placeholder="请选择客户意向度">
+                        <el-option label="无意向" value="NEED_NOT"></el-option>
+                        <el-option label="潜在客户"  value="POTENTIAL"></el-option>
+                        <el-option label="高意向客户"  value="HIGH_DEMAND"></el-option>
+                        <el-option label="低意向客户"  value="LOW_DEMAND"></el-option>
+                        <el-option label="无人接听"  value="NO_ANSWER"></el-option>
+                        <el-option label="成交"  value="DEAL"></el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="学车计划" class="col-xs-12 col-md-6">
+                    <el-select v-model="clueItem.customer_plan" placeholder="请选择学车计划">
+                        <el-option label="已学车"  value="HED_BEEN"></el-option>
+                        <el-option label="一周" value="ONE_WEEK"></el-option>
+                        <el-option label="一个月" value="ONE_MONTH"></el-option>
+                        <el-option label="三个月" value="THREE_MONTH"></el-option>
+                        <el-option label="六个月" value="SIX_MONTH"></el-option>
+                        <el-option label="无计划" value="NOT_PLAN"></el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="学员位置" class="col-xs-12 col-md-6">
+                    <el-input v-model="clueItem.address" placeholder="请输入学员位置"></el-input>
+                </el-form-item>
+
+                <el-form-item label="意向驾校" class="col-xs-12 col-md-6">
+                    <el-input v-model="clueItem.want_driving_school" placeholder="请输入意向驾校"></el-input>
+                </el-form-item>
+
+                <el-form-item label="推荐驾校" class="col-xs-12 col-md-6">
+                    <el-input v-model="clueItem.driving_school" placeholder="请输入推荐驾校"></el-input>
+                </el-form-item>
+
+                <el-form-item label="学员预算" class="col-xs-12 col-md-6">
+                    <el-input v-model="clueItem.plan_fee" type="number" placeholder="请输入报价"></el-input>
+                </el-form-item>
+
+                <el-form-item label="报价" class="col-xs-12 col-md-6">
+                    <el-input v-model="clueItem.quoted_price" type="number" placeholder="请输入学员预算"></el-input>
+                </el-form-item>
+
+                <el-form-item label="驾校低价" class="col-xs-12 col-md-6">
+                    <el-input v-model="clueItem.base_price" type="number" placeholder="请输入驾校低价"></el-input>
+                </el-form-item>
+
+                <el-form-item label="成交价格" class="col-xs-12 col-md-6">
+                    <el-input v-model="clueItem.deal_price" type="number" placeholder="请输入成交价格"></el-input>
+                </el-form-item>
+
+                <el-form-item label="成交时间" class="col-xs-12 col-md-6">
+                    <el-date-picker type="date" placeholder="请输入成交时间" v-model="clueItem.deal_time" ></el-date-picker>
+                </el-form-item>
+
+                <el-form-item label="开发记录" class="col-xs-12">
+                    <el-input v-model="clueItem.follow_up_record" type="textarea" placeholder="请输入开发记录"></el-input>
+                </el-form-item>
+
+
+            </el-form>
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-            <button class="btn btn-lg btn-success">提交</button>
-        </div>
     </div>
 </template>
 
 <script>
     export default {
         name: "ClueEditorComponent",
-        props: ['clueItem']
+        props: ['clueItem', 'channels']
     }
 </script>
 

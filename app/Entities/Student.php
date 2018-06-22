@@ -37,6 +37,14 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Student whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Student whereWechat($value)
  * @mixin \Eloquent
+ * @property int|null $userId 用户id
+ * @property string $openId 微信open_id
+ * @property string $groupId 微信群group id
+ * @property string $realName 学生姓名
+ * @property string|null $schoolInfo
+ * @property \Carbon\Carbon|null $createdAt
+ * @property \Carbon\Carbon|null $updatedAt
+ * @property string|null $deletedAt
  */
 class Student extends Model implements Transformable
 {

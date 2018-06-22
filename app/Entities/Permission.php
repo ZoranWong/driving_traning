@@ -21,6 +21,9 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Permission whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\Permission whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $displayName 显示名称
+ * @property \Carbon\Carbon|null $createdAt
+ * @property \Carbon\Carbon|null $updatedAt
  */
 class Permission extends Model implements Transformable
 {

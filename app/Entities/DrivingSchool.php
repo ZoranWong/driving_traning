@@ -37,6 +37,14 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\DrivingSchool whereTrainingPlace($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\DrivingSchool whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property float $totalWithdrewAmount 已提现钱
+ * @property float $totalAmount 累计总额
+ * @property string|null $trainingPlace 训练场地
+ * @property int $studentNum 学生数量
+ * @property int $cluesNum 教练人数
+ * @property \Carbon\Carbon|null $createdAt
+ * @property \Carbon\Carbon|null $updatedAt
+ * @property string|null $deletedAt
  */
 class DrivingSchool extends Model implements Transformable
 {

@@ -28,4 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['web', 'auth']], function (\Illuminate\Routing\Router $router) {
     $router->get('clues', 'DrivingCluesController@index')->name('clues.index');
+    $router->get('channels', 'ChannelsController@index')->name('channels.index');
+    $router->post('channel', 'ChannelsController@store')->name('channels.store');
+    $router->put('channel/{id}', 'ChannelsController@update')->name('channels.update');
 });

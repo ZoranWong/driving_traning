@@ -18,6 +18,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\PasswordReset whereMobile($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\PasswordReset whereToken($value)
  * @mixin \Eloquent
+ * @property \Carbon\Carbon|null $createdAt
  */
 class PasswordReset extends Model implements Transformable
 {

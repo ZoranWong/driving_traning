@@ -1,6 +1,29 @@
 <template>
-    <div class = "row">
+    <div class = "row ">
         <div class="block">
+            <el-form :inline="true" :model="searchData" class="demo-form-inline">
+                <el-form-item label="学员手机">
+                    <el-input v-model="searchData.mobile" ></el-input>
+                </el-form-item>
+                <el-form-item label="线索渠道" >
+                    <el-select v-model="searchData.channel" placeholder="请选择线索渠道">
+                        <el-option v-for="channel in channels" :label="channel.name" :value="channel.slug"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="客户意向度">
+                    <el-select v-model="searchData.intention" placeholder="请选择客户意向度">
+                        <el-option label="无意向" value="NEED_NOT"></el-option>
+                        <el-option label="潜在客户"  value="POTENTIAL"></el-option>
+                        <el-option label="高意向客户"  value="HIGH_DEMAND"></el-option>
+                        <el-option label="低意向客户"  value="LOW_DEMAND"></el-option>
+                        <el-option label="无人接听"  value="NO_ANSWER"></el-option>
+                        <el-option label="成交"  value="DEAL"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="onSearch">查询</el-button>
+                </el-form-item>
+            </el-form>
             <el-table
                     :data="currentPageItems"
                     border
@@ -102,12 +125,17 @@
             </el-pagination>
         </div>
         <el-dialog
-                title=""
+                title="编辑学员线索"
                 :visible.sync="dialogVisible"
                 width="30%"
                 :before-close="handleClose">
-            <clue-editor :clueItem="selectedItem"></clue-editor>
+            <clue-editor :clueItem="selectedItem" :channels="channels"></clue-editor>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="handleSubmit">提 交</el-button>
+            </div>
         </el-dialog>
+
 
     </div>
 </template>
@@ -115,6 +143,7 @@
 <script>
     export default {
         name: "ClueTableComponent",
+        props:['channels'],
         data() {
             return {
                 clues: {},
@@ -123,7 +152,10 @@
                 pageSize: 15,
                 currentPageItems: null,
                 dialogVisible: false,
-                selectedItem:null
+                selectedItem:null,
+                searchData: {
+                    mobile: ''
+                }
             }
         },
         watch: {
@@ -140,12 +172,22 @@
             this.getClues();
         },
         methods: {
+            onSearch() {
+
+            },
             handleEdit(index, item) {
                 this.selectedItem = item;
                 this.dialogVisible = true;
             },
+            handleSubmit() {
+                this.dialogVisible = false;
+            },
             handleDelete() {
 
+            },
+            handleClose() {
+                console.log('close');
+                this.dialogVisible = false;
             },
             handleCurrentChange() {
                 this.getClues();
@@ -183,7 +225,7 @@
                     }
                 }
             },
-            planFormatter(row, column, cellValue, index) {
+            planFormatter(row, column) {
                 let $value = row[column.property];
                 switch ($value) {
                     case 'HAD_BEEN': {
@@ -206,36 +248,17 @@
                     }
                 }
             },
-            channelFormatter(row, column, cellValue, index) {
+            channelFormatter(row, column) {
                 let $value = row[column.property];
-                switch ($value) {
-                    case 'baidu': {
-                        return '百度推广';
-                    }
-                    case 'toutiao': {
-                        return '今日头条';
-                    }
-                    case 'wx_quan': {
-                        return '微信朋友圈';
-                    }
-                    case 'wx_qun': {
-                        return '微信群';
-                    }
-                    case 'chelun': {
-                        return '车轮驾考通';
-                    }
-                    case 'baodian': {
-                        return '驾考宝典';
-                    }
-                    case 'owner': {
-                        return '平台推广';
-                    }
-                }
+                return $value['name'];
             }
         }
     }
 </script>
 
 <style scoped>
+    .row {
+        margin: 8px;
+    }
 
 </style>

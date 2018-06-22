@@ -14,6 +14,7 @@ const VueAxios = require('vue-axios');
 
 Vue.use(ElementUI);
 Vue.use(VueAxios, axios);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -23,6 +24,8 @@ Vue.use(VueAxios, axios);
 Vue.component('to-do-list', require('./components/ToDoListComponent.vue'));
 Vue.component('clue-editor', require('./components/ClueEditorComponent.vue'));
 Vue.component('clue-table', require('./components/ClueTableComponent.vue'));
+Vue.component('channel', require('./components/ChannelsComponent.vue'));
+
 
 const app = new Vue({
     el: '#app'

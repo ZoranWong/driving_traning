@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ChannelRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -27,14 +28,18 @@ class DrivingCluesController extends Controller
      */
     protected $repository;
 
+    protected $channelRepository ;
+
     /**
      * DrivingCluesController constructor.
      *
      * @param DrivingClueRepository $repository
      */
-    public function __construct(DrivingClueRepository $repository)
+    public function __construct(DrivingClueRepository $repository, ChannelRepository $channelRepository)
     {
         $this->repository = $repository;
+
+        $this->channelRepository = $channelRepository;
     }
 
     /**
@@ -44,14 +49,14 @@ class DrivingCluesController extends Controller
      */
     public function index(Request $request)
     {
-        $drivingClues = $this->repository->paginate($request->input('limit', self::PAGE_LIMIT));
-
+        $drivingClues = $this->repository->with('channel')->paginate($request->input('limit', self::PAGE_LIMIT));
+        $channels = $this->channelRepository->all();
         if (request()->wantsJson()) {
 
             return response()->json($drivingClues);
         }
 
-        return view('drivingClues.index', compact('drivingClues'));
+        return view('drivingClues.index', compact(['drivingClues', 'channels']));
     }
 
     /**
@@ -73,6 +78,8 @@ class DrivingCluesController extends Controller
                 'message' => 'DrivingClue created.',
                 'data'    => $drivingClue->toArray(),
             ];
+
+
 
             if ($request->wantsJson()) {
 

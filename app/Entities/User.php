@@ -44,6 +44,14 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereUserName($value)
  * @mixin \Eloquent
+ * @property string $userName 用户名
+ * @property int $provinceId 省份ID
+ * @property int $cityId 城市ID
+ * @property int $countyId 区县ID
+ * @property string|null $rememberToken
+ * @property \Carbon\Carbon|null $createdAt
+ * @property \Carbon\Carbon|null $updatedAt
+ * @property string|null $deletedAt
  */
 class User extends Model implements Transformable
 {

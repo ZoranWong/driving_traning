@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
@@ -115,5 +116,10 @@ class DrivingClue extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
+
+    public function channel():BelongsTo
+    {
+        return $this->belongsTo(Channel::class, 'channel', 'slug');
+    }
 
 }

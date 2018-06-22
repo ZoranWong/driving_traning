@@ -113,7 +113,7 @@
             </section>
 
             <!-- Main content -->
-            <section class="content" id = "app">
+            <section class="content container-fluid" id = "app">
 
                 @yield('content')
 
