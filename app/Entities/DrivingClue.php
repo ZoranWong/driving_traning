@@ -2,8 +2,10 @@
 
 namespace App\Entities;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Notifications\Notifiable;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
@@ -11,7 +13,6 @@ use Prettus\Repository\Traits\TransformableTrait;
  * App\Entities\DrivingClue
  *
  * @property int $id
- * @property string $channel 线索来源：JIA_KAO_BAO_DIAN-驾考宝典 CHE_LUN-车轮驾考通 37_LIFE-自营平台线索 BAIDU-百度推广 TOUTIAO-今日头条 WECHAT-微信分享 OTHER-其他
  * @property int $isStudent 是否是学生
  * @property int $bdUserId 客户开发人员
  * @property string $customerName 客户姓名
@@ -44,7 +45,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @property string $trainingPlace 训练场地
  * @property float $planFee 预算价格
  * @property float $quotedPrice 报价
- * @property int $dealTime 成交时间
+ * @property \Carbon\Carbon|null $dealTime 成交时间
  * @property float $dealPrice 成交价
  * @property float $basePrice 底价
  * @property float $profit 利润
@@ -53,6 +54,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  * @property \Carbon\Carbon|null $createdAt
  * @property \Carbon\Carbon|null $updatedAt
  * @property string|null $deletedAt
+ * @property Channel|null $channel
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\DrivingClue whereActualEnrollTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\DrivingClue whereActualExaminationFourTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\DrivingClue whereActualExaminationOneTime($value)
@@ -100,7 +102,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class DrivingClue extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, Notifiable;
 
     const WAIT = 0;
 
@@ -115,11 +117,57 @@ class DrivingClue extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'channel_slug',
+        'is_student',
+        'bd_user_id',
+        'customer_name',
+        'customer_mobile',
+        'driving_license_type',
+        'follow_up_time',
+        'intention',
+        'follow_up_record',
+        'customer_plan',
+        'actual_enroll_time',
+        'expect_physical_examination_time',
+        'expect_examination_one_time',
+        'expect_examination_two_time',
+        'expect_examination_three_time',
+        'expect_examination_four_time',
+        'expect_get_license_time',
+        'actual_physical_examination_time',
+        'actual_examination_one_time',
+        'actual_examination_two_time',
+        'actual_examination_three_time',
+        'actual_examination_four_time',
+        'actual_get_license_time',
+        'province_id',
+        'city_id',
+        'county_id',
+        'location',
+        'address',
+        'want_driving_school',
+        'driving_school',
+        'training_place',
+        'plan_fee',
+        'quoted_price',
+        'deal_time',
+        'deal_price',
+        'base_price',
+        'profit',
+        'commission',
+        'bonus',
+        'status',
+    ];
 
     public function channel():BelongsTo
     {
-        return $this->belongsTo(Channel::class, 'channel', 'slug');
+        return $this->belongsTo(Channel::class, 'channel_slug', 'slug');
+    }
+
+    public function routeNotificationForMobile()
+    {
+        return config('sms.new_clue_template.to');
     }
 
 }

@@ -13,7 +13,7 @@ class DrivingClueUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,8 @@ class DrivingClueUpdateRequest extends FormRequest
     {
         return [
             //
+            'channel_slug' => ['required', 'exist:channels,slug'],
+            'customer_mobile' => ['required', 'regex:'.RegularExp::MOBILE_REG_EXP]
         ];
     }
 }

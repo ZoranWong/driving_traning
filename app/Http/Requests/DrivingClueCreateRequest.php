@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Utils\RegularExp;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DrivingClueCreateRequest extends FormRequest
@@ -13,7 +14,7 @@ class DrivingClueCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +26,8 @@ class DrivingClueCreateRequest extends FormRequest
     {
         return [
             //
+            'channel_slug' => ['required', 'exist:channels,slug'],
+            'customer_mobile' => ['required', 'regex:'.RegularExp::MOBILE_REG_EXP]
         ];
     }
 }

@@ -17,7 +17,7 @@ class CreateDrivingCluesTable extends Migration
 	{
         Schema::create('driving_clues', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('channel')
+            $table->string('channel_slug')
                 ->default('owner')
                 ->comment('线索来源');
             $table->boolean('is_student')->default(false)->comment('是否是学生');
@@ -57,7 +57,7 @@ class CreateDrivingCluesTable extends Migration
             $table->string('training_place')->default('')->comment('训练场地');
             $table->float('plan_fee')->default(0)->comment('预算价格');
             $table->float('quoted_price')->default(0)->comment('报价');
-            $table->unsignedInteger('deal_time')->default(0)->comment('成交时间');
+            $table->timestamp('deal_time')->default(null)->comment('成交时间');
             $table->float('deal_price')->default(0)->comment('成交价');
             $table->float('base_price')->default(0)->comment('底价');
             $table->float('profit')->default(0)->comment('利润');
